@@ -32,3 +32,33 @@ input.form-control{
 #statTitle p{
     margin-bottom: 5px !important
 }
+.saving-throw-border{
+    border: 1px solid black;
+    overflow: hidden;
+}
+#saving-throw{
+    border-radius:40px;
+    text-align: center;
+}
+.bordered{
+    border: 1px solid black;
+}
+
+
+.max-hit-points{
+    text-align: left;
+    font-size: small;
+}
+.current-hit-points{
+    text-align: center;
+    font-size: large;
+    width: 100px;
+    border: none
+}
+.hit-die{
+    text-align: right;
+    font-size: small;
+}
+.hit-point-title{
+    font-weight: bold;
+}

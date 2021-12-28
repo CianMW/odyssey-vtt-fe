@@ -9,9 +9,13 @@ const CharacterSheet = () => {
      const [level, setLevel] = useState("")
   return (
     <Container fluid className="characterSheet">
-      <Row>
-        <Col sm={3}>
-          <div id="characterBasicInfo">
+        <Row>
+            <Col sm={3}>
+                <div>
+                </div>
+            </Col>
+            <Col sm={3}>
+                <div>
             <InputGroup className="mb-1">
               <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
               <FormControl
@@ -28,6 +32,10 @@ const CharacterSheet = () => {
                 aria-describedby="basic-addon1"
               />
             </InputGroup>
+                </div>
+            </Col>
+            <Col sm={3}>
+                <div>
             <InputGroup className="mb-1">
               <InputGroup.Text  id="basic-addon1">Race</InputGroup.Text>
               <FormControl
@@ -44,6 +52,10 @@ const CharacterSheet = () => {
                 aria-describedby="basic-addon1"
               />
             </InputGroup>
+                </div>
+            </Col>
+            <Col sm={3}>
+                <div>
             <InputGroup className="mb-1">
               <InputGroup.Text  id="basic-addon1">Next Lvl</InputGroup.Text>
               <FormControl
@@ -52,8 +64,14 @@ const CharacterSheet = () => {
                 aria-describedby="basic-addon1"
               />
             </InputGroup>
+                </div>
+            </Col>
+        </Row>
+      <Row>
+        <Col sm={3}>
+          <div id="characterBasicInfo" className="mb-2">
           </div>
-            <div id="characterStats" className="p-1">
+            <div id="characterStats" className="mb-2 p-1">
                 
                 <Row id="statTitle" className="statContainer d-flex justify-content-between bottom-border">
                     <Col className="statName" sm={6}>
@@ -132,10 +150,98 @@ const CharacterSheet = () => {
                     <input type="number" placeholder="10"></input>
                     </Col>
                 </Row>
-
             </div>
+            <div id="savingThrows" className="saving-throw-border mb-2 p-1">
+                
+                <Row id="statTitle" className="statContainer d-flex justify-content-between bottom-border">
+                    <Col className="statName" sm={12}>
+                        <p>Saving Throws</p>
+                    </Col>
+                </Row>
+                <Row className="statContainer d-flex mt-2 justify-content-between">
+                    <Col className="statName" sm={9}>
+                        <p>Death Ray/Poison</p>
+                    </Col>
+                    <Col className="p-0" sm={3}>
+                        <input id="saving-throw" type="number" placeholder="10"></input>
+                    </Col>
+                </Row>
+                <Row className="statContainer d-flex mt-2 justify-content-between">
+                    <Col className="statName" sm={9}>
+                        <p>Magic Wands</p>
+                    </Col>
+                    <Col className="p-0" sm={3}>
+                        <input id="saving-throw" type="number" placeholder="10"></input>
+                    </Col>
+                </Row>
+                <Row className="statContainer d-flex mt-2 justify-content-between">
+                    <Col className="statName" sm={9}>
+                        <p>Paralysis/Turn to stone</p>
+                    </Col>
+                    <Col className="p-0" sm={3}>
+                        <input id="saving-throw" type="number" placeholder="10"></input>
+                    </Col>
+                </Row>
+                <Row className="statContainer d-flex mt-2 justify-content-between">
+                    <Col className="statName" sm={9}>
+                        <p>Dragon Breath</p>
+                    </Col>
+                    <Col className="p-0" sm={3}>
+                        <input id="saving-throw" type="number" placeholder="10"></input>
+                    </Col>
+                </Row>
+                <Row className="statContainer d-flex mt-2 justify-content-between">
+                    <Col className="statName" sm={9}>
+                        <p>Rod, staff or Spell</p>
+                    </Col>
+                    <Col className="p-0" sm={3}>
+                        <input id="saving-throw" type="number" placeholder="1"></input>
+                    </Col>
+                </Row>
+            </div>
+
         </Col>
-        <Col sm={4}></Col>
+        <Col sm={4} id="center-character-sheet">
+            <Row>
+                <Col className="bordered p-0" id="hitPoints" sm={6}>
+                    <div fluid className="health bottom-border">
+                        <p className="hit-point-title mb-1">Hit Points</p>
+                    </div>
+                    <div className="max-hit-points">
+                        <p>max</p>
+                    </div>
+                    <input type="name" className="current-hit-points">
+                    </input>
+                    <div className="hit-die">
+                        <small>max</small>
+                    </div>
+                </Col>
+                <Col className="bordered p-0" id="hitPoints" sm={6}>
+                    <div fluid className="health bottom-border">
+                        <p className="hit-point-title mb-1">Attack Bonus</p>
+                    </div>
+                    <input type="name" className="current-hit-points">
+                    </input>
+                </Col>
+            </Row>
+            <Row className="bordered mt-3">
+                <Row className="p-0 bottom-border">
+                    <Col sm="6" className="inventoryTitle">
+                        <span>Inventory</span>
+                    </Col>
+                    <Col sm="3" className="inventoryTitle">
+                        <span>Quantity</span>
+                    </Col>
+                    <Col sm="3" className="inventoryTitle">
+                        <span>Weight</span>
+                    </Col>
+                <p className="p-0">Inventory</p>
+                <div className="inventory-item bottom-border-light p-0">
+                <p className="p-0">Inventory</p>
+                </div>
+                </Row>
+            </Row>
+        </Col>
         <Col sm={4}></Col>
       </Row>
     </Container>
