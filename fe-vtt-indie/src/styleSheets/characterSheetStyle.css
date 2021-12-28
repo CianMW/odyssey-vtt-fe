@@ -1,0 +1,34 @@
+.characterSheet{
+    border: 1px solid #000000;
+    margin: 5px
+}
+#basic-addon1{
+    border: 1px solid #000000 !important;
+    padding: 0px;
+    width: 60px;
+    display: flex;
+}
+input.form-control{
+    border: 1px solid black;
+}
+
+.statContainer{
+    text-align:left;
+}
+.statContainer input{
+    width: 40px;
+}
+
+.statName{
+    font-weight: bold;
+}
+#characterStats{
+    border: 1px solid black;
+    overflow: hidden;
+}
+.bottom-border{
+    border-bottom: 1px solid black;
+}
+#statTitle p{
+    margin-bottom: 5px !important
+}
