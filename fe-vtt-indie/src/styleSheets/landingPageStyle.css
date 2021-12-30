@@ -12,3 +12,8 @@
 #overflow-cutoff{
     overflow-x: hidden;
 }
+
+.landing-info{
+    color: white !important;
+    font-weight: bold;
+}

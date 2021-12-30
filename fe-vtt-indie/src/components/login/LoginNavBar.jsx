@@ -6,7 +6,7 @@ const LoginNavBar = () => {
     return(
         <>
         <Container className="p-0" id="navbar-container" fluid>
-          <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" >
+          <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" fixed="top" >
             <Container>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />

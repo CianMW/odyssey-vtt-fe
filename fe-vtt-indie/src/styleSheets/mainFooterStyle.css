@@ -1,5 +1,5 @@
 #mainFooter {
     background-color: thistle;
-    min-width: 100vw;
+    width: 100%;
     min-height: 50px;
 }
