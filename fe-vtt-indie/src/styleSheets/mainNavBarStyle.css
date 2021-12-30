@@ -1,0 +1,21 @@
+/* main color #2A2C2B */
+
+#navbar-container #main-navbar {
+    background-color: #000000 ;
+    color: white ;
+}
+#navbar-container #main-navbar .linked {
+    color: gray;
+}
+#navbar-container #main-navbar .linked:hover{
+    color: white;
+}
+#navbar-container #main-navbar #navbarScrollingDropdown {
+    color: gray;
+}
+#navbar-container #main-navbar #navbarScrollingDropdown:hover{
+    color: white;
+}
+span.navbar-toggler-icon{
+    background-image: white !important
+}
