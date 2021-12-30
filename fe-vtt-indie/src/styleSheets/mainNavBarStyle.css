@@ -16,3 +16,6 @@
 #navbar-container #main-navbar #navbarScrollingDropdown:hover{
     color: white;
 }
+span.navbar-toggler-icon{
+    background-image: white !important
+}

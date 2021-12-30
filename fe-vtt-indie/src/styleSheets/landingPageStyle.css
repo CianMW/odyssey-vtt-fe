@@ -1,0 +1,14 @@
+.intro-container{
+    width: 100vw;
+    height: 100vh;
+}
+.background-fixed{
+    background-image: url("https://wallpapercave.com/wp/zMWFjNf.jpg");
+    background-repeat: no-repeat;
+    background-color: #b1b1b1;
+    background-size: cover;
+} 
+
+#overflow-cutoff{
+    overflow-x: hidden;
+}
