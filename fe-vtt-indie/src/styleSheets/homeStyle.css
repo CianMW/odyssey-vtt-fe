@@ -1,0 +1,16 @@
+.your-games{
+    background-color: #FF7F7F;
+    /* width: 100vw; */
+    height: 100vh;
+    border-left: 1px solid black;
+    padding: 0 ;
+
+}
+.user-schedule{
+    background-color: #d1d1d1;
+    /* width: 100vw; */
+    height: 100vh;
+    border-right: 1px solid black;
+    padding: 0 ;
+
+}
