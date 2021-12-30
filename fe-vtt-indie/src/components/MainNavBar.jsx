@@ -1,20 +1,38 @@
-import {Container, Navbar, Nav} from "react-bootstrap"
+import {Container, Navbar, Nav, NavDropdown} from "react-bootstrap"
 import "../styleSheets/mainNavBarStyle.css"
+
 const MainNavBar = () => {
 
 
     return(
         <>
         <Container className="p-0" id="navbar-container" fluid>
-          <Navbar id="main-navbar" variant="light" >
+          <Navbar id="main-navbar" variant="light">
             <Container>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-            <Nav className="me-auto">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+             <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto" navbarScroll>
             <Nav.Link className="linked" href="#home">Home <i class="bi bi-caret-down-fill"></i></Nav.Link>
-            <Nav.Link  className="linked" href="#features">Features <i class="bi bi-caret-down-fill"></i></Nav.Link>
-            <Nav.Link className="linked"  href="#pricing">Pricing <i class="bi bi-caret-down-fill"></i></Nav.Link>
+            {/* start dropdown on hover */}
+        <NavDropdown className="linked" title="Games" id="navbarScrollingDropdown">
+          <NavDropdown.Item href="#action3">My Games</NavDropdown.Item>
+          <NavDropdown.Item href="#action4">Create a New Game</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action5">
+            Find a Game
+          </NavDropdown.Item>
+        </NavDropdown>
+
+        {/* end dropdown on hover */}
             </Nav>
+            </Navbar.Collapse>
             </Container>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+             <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav.Link className="linked" href="#home">My Account<i class="bi bi-caret-down-fill"></i></Nav.Link>
+            </Navbar.Collapse>
+
         </Navbar>
      </Container>
         </>

@@ -5,5 +5,14 @@
     color: white ;
 }
 #navbar-container #main-navbar .linked {
+    color: gray;
+}
+#navbar-container #main-navbar .linked:hover{
+    color: white;
+}
+#navbar-container #main-navbar #navbarScrollingDropdown {
+    color: gray;
+}
+#navbar-container #main-navbar #navbarScrollingDropdown:hover{
     color: white;
 }
