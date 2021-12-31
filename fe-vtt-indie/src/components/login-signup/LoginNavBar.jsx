@@ -5,7 +5,7 @@ const LoginNavBar = () => {
 
     return(
         <>
-        <Container className="p-0" id="navbar-container" fluid>
+        <Container className="p-0 static-margin" id="navbar-container" fluid>
           <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" fixed="top" >
             <Container fluid>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>

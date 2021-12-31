@@ -29,7 +29,7 @@ const SignUp = () => {
             <Col sm={12} md={8} lg={6} className="bordered-login p-3">
               <Row>
                 <Col>
-                  <h4>Sign up</h4>
+                  <h4 className="sign-in-title">Sign up</h4>
                 </Col>
               </Row>
               <Row>
@@ -79,10 +79,19 @@ const SignUp = () => {
         <Row className="justify-content-center">
           <Col sm={6}>
             <div className="d-flex justify-content-center">
-              <Button as="Link">Sign Up</Button>
-            </div>
+            <div className="button-red"  as="Link">
+              <span>Join   <i class="fas fa-dice-d20"></i></span></div>
+                    </div>
           </Col>
         </Row>
+        <Row className="justify-content-center mt-3">
+          <Col sm={6}>
+            <small className="d-flex justify-content-center">
+              <Link to="logIn" ><p>I already have an account, Log In</p> </Link>
+            </small>
+          </Col>
+        </Row>
+        
 
             </Col>
           </Row>

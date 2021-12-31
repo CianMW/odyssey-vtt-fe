@@ -21,7 +21,7 @@
 }
 
 div.button-red{
-    background-color: #d80d28;
+    background-color: #d1040b;
     outline-color: black;
     color: white;
     opacity: 0.9;
@@ -35,7 +35,6 @@ div.button-red{
     font-size:large;
     cursor: pointer;
     transition-duration: 0.5s, 0.5s;
-
 }
 
 div.button-red:hover{

@@ -10,8 +10,6 @@ const LandingPage = () => {
     
         <div id="overflow-cutoff">
 
-        <LoginNavBar/> 
-
         <Container className="intro-container d-flex justify-content-center background-fixed p-0 m-0" fluid>
             <Row>
 
