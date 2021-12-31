@@ -13,7 +13,56 @@
     overflow-x: hidden;
 }
 
-.landing-info{
+.landing-text{
     color: white !important;
     font-weight: bold;
+    font-size: 30px;
+    white-space: nowrap;
 }
+
+div.button-red{
+    background-color: #d80d28;
+    outline-color: black;
+    color: white;
+    opacity: 0.9;
+    width: 100px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    font-weight: bolder;
+    font-size:large;
+    cursor: pointer;
+    transition-duration: 0.5s, 0.5s;
+
+}
+
+div.button-red:hover{
+    background-color: #DB0007;
+    outline-color: black;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+    color: white;
+    opacity: 1;
+    width: 100px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    font-weight: bolder;
+    font-size:large;
+    cursor: pointer;
+    box-shadow:
+    0 0 20px 5px #fff;
+    transition-duration: 0.5s, 0.5s;
+}
+
+/* div.glow{
+    background-color: transparent;
+    box-shadow:
+      0 0 60px 30px #fff,
+      0 0 100px 60px #f0f,
+      0 0 140px 90px #0ff;
+} */
+

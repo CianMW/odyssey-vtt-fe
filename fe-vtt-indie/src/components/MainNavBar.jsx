@@ -7,11 +7,11 @@ const MainNavBar = () => {
     return(
         <>
         <Container className="p-0" id="navbar-container" fluid>
-          <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" >
-            <Container>
+          <Navbar id="main-navbar" className="linked navbar-dark" expand="lg">
+            <Container className="d-flex justify-content-between">
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-             <Navbar.Collapse id="responsive-navbar-nav">
+             <Navbar.Collapse className="justify-content-between" id="responsive-navbar-nav">
             <Nav className="me-auto" navbarScroll>
             <Nav.Link className="linked" href="#home">Home <i class="bi bi-caret-down-fill"></i></Nav.Link>
             {/* start dropdown on hover */}

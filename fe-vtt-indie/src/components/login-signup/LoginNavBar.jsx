@@ -1,5 +1,5 @@
 import {Container, Navbar, Nav, NavDropdown} from "react-bootstrap"
-
+import "../../styleSheets/mainNavBarStyle.css"
 
 const LoginNavBar = () => {
 
@@ -7,18 +7,15 @@ const LoginNavBar = () => {
         <>
         <Container className="p-0" id="navbar-container" fluid>
           <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" fixed="top" >
-            <Container>
+            <Container fluid>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
              <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto" navbarScroll>
+            <Nav className="d-flex justify-content-center">
             <Nav.Link className="linked" href="#home"> Get Started </Nav.Link>
             <Nav.Link className="linked" href="#home"> Player Portal</Nav.Link>
             <Nav.Link className="linked" href="#home"> About </Nav.Link>
-            {/* start dropdown on hover */}
-
-        {/* end dropdown on hover */}
-        <Nav.Link className="linked" href="#home">Contact</Nav.Link>
+            <Nav.Link className="linked" href="#home">Contact</Nav.Link>
             </Nav>
             </Navbar.Collapse>
             </Container>
