@@ -25,11 +25,9 @@ const LandingPage = () => {
                 <Col sm={4}>
                     <Link to="/logIn">
                     <div className="d-flex justify-content-center">
-                        <div className="glow">
-                        <div className="button-red" as="Link"><span>
+                        <div className="button-red glow" as="Link"><span>
                             Log In
                             </span></div>
-                        </div>
                     </div>
                     </Link>
                 </Col>
@@ -38,7 +36,7 @@ const LandingPage = () => {
                 <Col sm={4}>
                     <Link to="/SignUp">
                     <div className="d-flex justify-content-center">
-                        <div className="button-red"  as="Link"><span>
+                        <div className="button-red glow"  as="Link"><span>
                             Sign Up
                             </span></div>
                     </div>
