@@ -8,15 +8,13 @@ import Login from './components/login-signup/Login';
 import LandingPage from './components/LandingPage/LandingPage';
 import MainFooter from './components/Footer';
 import SignUp from './components/login-signup/SignUp';
-import LoginNavBar from './components/login-signup/LoginNavBar';
 
 function App() {
   return (
     <div className="App">
         <Router>
-        <LoginNavBar /> 
-          <Routes className="mt-5">
-            <Route path="/" element={<LandingPage />}/>
+          <Routes>
+            <Route path="/" element={<LandingPage/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
             <Route path="/signUp" element={<Login/>}/>
           </Routes>

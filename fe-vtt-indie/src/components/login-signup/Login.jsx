@@ -1,7 +1,6 @@
 import { Container, Row , Col, Button} from "react-bootstrap"
 import LoginNavBar from "./LoginNavBar"
 import { Link } from "react-router-dom"
-import "../../styleSheets/signUpLogInStyle.css"
 
 
 const Login = () => {
