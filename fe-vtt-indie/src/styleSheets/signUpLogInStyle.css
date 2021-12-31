@@ -1,23 +1,14 @@
-.intro-container{
-    width: 100vw;
-    height: 100vh;
+.bordered-login{
+    border: 3px solid rgb(0, 0, 0) !important;
+    border-radius: 10px;
 }
-.background-fixed{
-    background-image: url("https://wallpapercave.com/wp/zMWFjNf.jpg");
-    background-repeat: no-repeat;
-    background-color: #b1b1b1;
-    background-size: cover;
-} 
-
-#overflow-cutoff{
-    overflow-x: hidden;
+#basic-addon1{
+    width:80px;
 }
 
-.landing-text{
-    color: white !important;
-    font-weight: bold;
+.sign-in-title{
     font-size: 30px;
-    white-space: nowrap;
+    font-weight: bolder;
 }
 
 div.button-red{
@@ -54,10 +45,9 @@ div.button-red:hover{
     transition-duration: 0.5s, 0.5s;
 }
 
-div.glow:hover{
+div.inverted-glow:hover{
     border-radius: 10%;
     box-shadow:
-    0 0 20px 5px #fff;
+    0 0 20px 5px rgb(0, 0, 0);
     transition-duration: 0.5s, 0.5s;
 }
-
