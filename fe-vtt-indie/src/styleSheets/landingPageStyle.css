@@ -37,9 +37,12 @@ div.button-red{
     transition-duration: 0.5s, 0.5s;
 
 }
+div.button-red span{
+    opacity: 1;
+}
 
 div.button-red:hover{
-    background-color: #DB0007;
+    background-color: #d1040b;
     outline-color: black;
     box-shadow: 5px 5px 5px rgb(0, 0, 0);
     color: white;

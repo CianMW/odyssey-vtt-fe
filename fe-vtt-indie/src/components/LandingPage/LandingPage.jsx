@@ -2,6 +2,7 @@ import { Container, Row , Col, Button} from "react-bootstrap"
 import LoginNavBar from "../login-signup/LoginNavBar"
 import { Link } from "react-router-dom"
 import "../../styleSheets/landingPageStyle.css"
+import { useState } from "react"
 
 
 const LandingPage = () => {
@@ -10,7 +11,7 @@ const LandingPage = () => {
     
         <div id="overflow-cutoff">
 
-        <LoginNavBar/> 
+        {/* <LoginNavBar/>  */}
 
         <Container className="intro-container d-flex justify-content-center background-fixed p-0 m-0" fluid>
             <Row>
@@ -47,6 +48,7 @@ const LandingPage = () => {
                     </Link>
                 </Col>
             </Row>
+            
             </Row>
         </Container>
         </div>

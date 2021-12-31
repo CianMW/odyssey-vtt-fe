@@ -44,3 +44,7 @@ a.linked.nav-link{
     display: flex;
     justify-content: space-between;
 } */
+
+.static-margin{
+    margin-bottom: 80px;
+}
