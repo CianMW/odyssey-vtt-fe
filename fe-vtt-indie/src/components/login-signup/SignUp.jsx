@@ -79,7 +79,7 @@ const SignUp = () => {
         <Row className="justify-content-center">
           <Col sm={6}>
             <div className="d-flex justify-content-center">
-            <div className="button-red"  as="Link">
+            <div className="button-red inverted-glow"  as="Link">
               <span>Join   <i class="fas fa-dice-d20"></i></span></div>
                     </div>
           </Col>
@@ -87,7 +87,7 @@ const SignUp = () => {
         <Row className="justify-content-center mt-3">
           <Col sm={6}>
             <small className="d-flex justify-content-center">
-              <Link to="logIn" ><p>I already have an account, Log In</p> </Link>
+              <Link to="/login" ><p>I already have an account, Log In</p> </Link>
             </small>
           </Col>
         </Row>
