@@ -73,12 +73,11 @@ const Login = () => {
           <Row className="justify-content-center mt-3">
             <Col sm={6}>
               <small className="d-flex justify-content-center">
-                <Link to="logIn" ><p>I don't have an account, sign me up!</p> </Link>
+                <Link to="/signUp" ><p>I don't have an account, sign me up!</p> </Link>
               </small>
             </Col>
           </Row>
           
-  
               </Col>
             </Row>
           </Container>
