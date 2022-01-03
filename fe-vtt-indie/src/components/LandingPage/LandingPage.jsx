@@ -23,7 +23,7 @@ const LandingPage = () => {
 
             <Row className="d-flex">
                 <Col sm={4}>
-                    <Link to="/logIn">
+                    <Link to="/login">
                     <div className="d-flex justify-content-center">
                         <div className="button-red glow" as="Link"><span>
                             Log In

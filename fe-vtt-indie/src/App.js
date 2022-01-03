@@ -10,11 +10,12 @@ import MainFooter from './components/Footer';
 import SignUp from './components/login-signup/SignUp';
 import LoginNavBar from './components/login-signup/LoginNavBar';
 import MainNavBar from './components/MainNavBar';
+import { useState } from 'react';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [userId, setUserId] = useState(null)
   return (
     <div className="App">
         <Router>
@@ -27,8 +28,7 @@ function App() {
             <Route path="/" element={<LandingPage/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
             <Route path="/home/:userId" element={<Home/>}/>
-            {/* <Route path="/login" element={<Login/>}/>
-            <Route path="/login" element={<Login/>}/> */}
+            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} loggedIn={loggedIn}/>}/>
           </Routes>
            <MainFooter/>
         </Router>
