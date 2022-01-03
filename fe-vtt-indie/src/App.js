@@ -9,16 +9,26 @@ import LandingPage from './components/LandingPage/LandingPage';
 import MainFooter from './components/Footer';
 import SignUp from './components/login-signup/SignUp';
 import LoginNavBar from './components/login-signup/LoginNavBar';
+import MainNavBar from './components/MainNavBar';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
   return (
     <div className="App">
         <Router>
-          <LoginNavBar/>
+          { loggedIn ? (
+            <MainNavBar/>
+          ):(
+            <LoginNavBar/>
+          )}
           <Routes>
             <Route path="/" element={<LandingPage/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/home/:userId" element={<Home/>}/>
+            {/* <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<Login/>}/> */}
           </Routes>
            <MainFooter/>
         </Router>
