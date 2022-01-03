@@ -9,7 +9,7 @@ const CharacterSheet = () => {
   const [characterClass, setCharacterClass] = useState("");
   const [level, setLevel] = useState("");
   return (
-    <Container className="characterSheet">
+    <Container className="characterSheet image-border">
       <Row>
         <Col sm={3}>
           <div></div>
@@ -96,11 +96,12 @@ const CharacterSheet = () => {
         {/* Left Character sheet */}
 
         <Col className="p-0" id="left-character-sheet" sm={4}>
-          <div id="characterStats" className="mb-2 p-1">
+          <div id="characterStats" className="mb-2 p-0 image-border ">
+            <div className="background-color">
+
             <Row
-              id="statTitle"
-              className="statContainer d-flex justify-content-between bottom-border"
-            >
+              className="statTitle statContainer d-flex justify-content-between bottom-border"
+              >
               <Col className="statName" sm={6}>
                 <p>Statistic</p>
               </Col>
@@ -177,11 +178,11 @@ const CharacterSheet = () => {
                 <input type="number" placeholder="10"></input>
               </Col>
             </Row>
+            </div>
           </div>
           <div id="savingThrows" className="saving-throw-border mb-2 p-1">
             <Row
-              id="statTitle"
-              className="statContainer d-flex justify-content-between bottom-border"
+              className="statTitle statContainer d-flex justify-content-between bottom-border"
             >
               <Col className="statName" sm={12}>
                 <p>Saving Throws</p>
