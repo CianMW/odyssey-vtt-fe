@@ -21,6 +21,24 @@ const Login = () => {
     }, [password, email])
   
     
+
+    const signIn = async () => {
+      const creds = email+ ":"+password
+      const b64Auth = await btoa(creds)
+      console.log(b64Auth)
+      const b64Authentication = "basic "+ b64Auth
+    
+    const response = await fetch("http://localhost:3150/user/me", {
+      headers:{
+        authorization:b64Authentication 
+      }
+    })
+    if (response.ok) {
+      const data = await response.json()
+      console.log(data)
+    }
+      
+    }
     return (
         <div className="d-flex align-items-center">
         <Container className="intro-container mt-5">
@@ -65,7 +83,7 @@ const Login = () => {
           <Row className="justify-content-center">
             <Col sm={6}>
               <div className="d-flex justify-content-center">
-              <div className="button-red  inverted-glow"  as="Link">
+              <div onClick={e => signIn()} className="button-red  inverted-glow"  as="Link">
                 <span>Join   <i class="fas fa-dice-d20"></i></span></div>
                       </div>
             </Col>
