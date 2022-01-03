@@ -25,13 +25,14 @@ input.form-control{
     font-weight: bold;
 }
 #characterStats{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     overflow: hidden;
+    background-color: transparent;
 }
 .bottom-border{
     border-bottom: 1px solid black;
 }
-#statTitle p{
+.statTitle p{
     margin-bottom: 5px !important
 }
 .saving-throw-border{
@@ -95,23 +96,18 @@ input.form-control{
     font-weight:900;
 }
 
-/* rough lines test */
-.el {
-    background: var(--rough-fill);
-    border: var(--rough-stroke-width) solid var(--rough-stroke);
-    --rough-fill: #0081ff;
-    --rough-stroke: black;
-    --rough-stroke-width: 2px;
-    --rough-roughness: 10;
-  }
-  @supports (border-image-source: paint(rough-boxes)) {
-    .is-loaded .el {
-      border-image-source: paint(rough-boxes);
-      border-image-slice: 0 fill;
-      border-image-outset: 10px;
-      background: none;
-    }
-  }
 
-  /* sketchy lines test*/
+/* image-border test */
 
+.image-border {
+    padding: 20px;
+    border-width: 60px;
+    border-style: solid;
+    border-image-source: url("../../asset-extra/Border image dice Sara edit.svg");
+    border-image-slice: 80;
+    /* border-image-outset: 4px; */
+    background-color: transparent;
+}
+.background-color{
+    background:transparent;
+}
