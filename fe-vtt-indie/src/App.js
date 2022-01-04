@@ -12,6 +12,7 @@ import LoginNavBar from './components/login-signup/LoginNavBar';
 import MainNavBar from './components/MainNavBar';
 import { useState } from 'react';
 import CreateGame from './components/CreateGame/CreateGame';
+import { Container } from 'react-bootstrap';
 
 function App() {
 
@@ -24,8 +25,10 @@ function App() {
           { loggedIn ? (
             <MainNavBar/>
           ):(
-            <LoginNavBar/>
+            <LoginNavBar className="static-margin"/>
           )}
+          <Container className="full-length">
+
           <Routes>
             <Route path="/" element={<LandingPage/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
@@ -33,6 +36,8 @@ function App() {
             <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} loggedIn={loggedIn} setBasicAuth={setBasicAuth}/>}/>
             <Route path="/createGame" element={<CreateGame  basicAuth={basicAuth}/>}/>
           </Routes>
+
+          </Container>
            <MainFooter/>
         </Router>
     </div>
