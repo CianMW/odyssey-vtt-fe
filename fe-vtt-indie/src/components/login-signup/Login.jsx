@@ -8,10 +8,11 @@ import {
   } from "react-bootstrap";
   import LoginNavBar from "./LoginNavBar"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
-const Login = () => {
+const Login = ({setUserId, setLoggedIn, loggedIn, setBasicAuth}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -20,7 +21,32 @@ const Login = () => {
       console.log( email, password)
     }, [password, email])
   
+    let navigate = useNavigate()
+
+    const signIn = async () => {
+      const creds = email+ ":"+ password
+      const b64Auth = await btoa(creds)
+      console.log(b64Auth)
+      const b64Authentication = "basic "+ b64Auth
     
+    const response = await fetch("http://localhost:3150/user/me", {
+      headers:{
+        authorization:b64Authentication 
+      }
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      setBasicAuth(b64Authentication)
+      console.log(data)
+      setUserId(data._id);
+      setLoggedIn(true);
+      navigate(`/home/${data._id}`, {replace: true})
+
+
+    }
+      
+    }
     return (
         <div className="d-flex align-items-center">
         <Container className="intro-container mt-5">
@@ -29,7 +55,7 @@ const Login = () => {
               <Col sm={12} md={8} lg={6} className="bordered-login p-3">
                 <Row>
                   <Col>
-                    <h4 className="sign-in-title">Sign up</h4>
+                    <h4 className="sign-in-title">Log In</h4>
                   </Col>
                 </Row>
                 <Row>
@@ -65,7 +91,7 @@ const Login = () => {
           <Row className="justify-content-center">
             <Col sm={6}>
               <div className="d-flex justify-content-center">
-              <div className="button-red  inverted-glow"  as="Link">
+              <div onClick={e => signIn()} className="button-red  inverted-glow"  as="Link">
                 <span>Join   <i class="fas fa-dice-d20"></i></span></div>
                       </div>
             </Col>

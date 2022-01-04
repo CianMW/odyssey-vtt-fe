@@ -10,26 +10,34 @@ import MainFooter from './components/Footer';
 import SignUp from './components/login-signup/SignUp';
 import LoginNavBar from './components/login-signup/LoginNavBar';
 import MainNavBar from './components/MainNavBar';
+import { useState } from 'react';
+import CreateGame from './components/CreateGame/CreateGame';
+import { Container } from 'react-bootstrap';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [userId, setUserId] = useState(null)
+  const [basicAuth, setBasicAuth] = useState(null)
   return (
     <div className="App">
         <Router>
           { loggedIn ? (
             <MainNavBar/>
           ):(
-            <LoginNavBar/>
+            <LoginNavBar className="static-margin"/>
           )}
+          <Container className="full-length">
+
           <Routes>
             <Route path="/" element={<LandingPage/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
-            <Route path="/home/:userId" element={<Home/>}/>
-            {/* <Route path="/login" element={<Login/>}/>
-            <Route path="/login" element={<Login/>}/> */}
+            <Route path="/home/:userId" element={<Home basicAuth={basicAuth}/>}/>
+            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} loggedIn={loggedIn} setBasicAuth={setBasicAuth}/>}/>
+            <Route path="/createGame" element={<CreateGame  basicAuth={basicAuth}/>}/>
           </Routes>
+
+          </Container>
            <MainFooter/>
         </Router>
     </div>
