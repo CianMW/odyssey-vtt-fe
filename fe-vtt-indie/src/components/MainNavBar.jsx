@@ -6,8 +6,8 @@ const MainNavBar = () => {
 
     return(
         <>
-        <Container className="p-0" id="navbar-container" fluid>
-          <Navbar id="main-navbar" className="linked navbar-dark" expand="lg">
+        <Container className="p-0 static-margin" id="navbar-container" fluid>
+          <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" fixed="top" >
             <Container className="d-flex justify-content-between">
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
