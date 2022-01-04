@@ -4,9 +4,17 @@ import "../styleSheets/mainFooterStyle.css"
 
 const MainFooter = () => {
     return(
-        <Container fluid className="footer" id="mainFooter">
-        <Navbar fixed="bottom" />
-        </Container>
+
+  <Navbar bg="dark" variant="dark" fixed="bottom">
+    <Container>
+      <Navbar.Brand href="#home">
+        <span>Odyssey   
+            <small> VTT</small>
+            </span>
+      </Navbar.Brand>
+    </Container>
+  </Navbar>
+        
     )
 }
 

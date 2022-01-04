@@ -3,15 +3,27 @@ import { Row, Container, Col } from "react-bootstrap"
 import "../../styleSheets/homeStyle.css"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 
 
-const Home = () => {
+const Home = ({basicAuth}) => {
     const [games, setGames] = useState(null)
 
+    const fetchUserData = async () => {
+        console.log("basic 64 auth : ", basicAuth)
+        const response = await fetch("http://localhost:3150/user/me", {
+            headers:{
+              authorization:basicAuth 
+            }
+          })
+    }
+
+    useEffect(() => {
+        fetchUserData()
+    }, []);
 
     return(
         <>
-        <MainNavBar/>
         <Container className="background-grayed" fluid>
         <Row> 
             <Col className="user-schedule" sm={6}>
@@ -25,6 +37,13 @@ const Home = () => {
             <Col className="your-games" sm={6}>
             <div >
                 <h4 className="mt-2 bottom-border">Your Games</h4>
+                <Link to="/createGame"> 
+                    <div>
+                        <div>   
+                            <h6><i className=" bold bi bi-plus-lg"></i> create a new game </h6>
+                        </div>
+                    </div>
+                </Link>
                 {/* 
                 SEARCH component = search for game by name , tag or player 
                 If no games found display others  
