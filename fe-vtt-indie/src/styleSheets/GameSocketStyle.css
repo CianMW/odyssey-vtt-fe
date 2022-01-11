@@ -1,7 +1,26 @@
 .parent-wide{
-    width: 100%
+    min-width: 100%
 }
 .dynamic-folder{
-    width:33%;
     height: 30px;
+    cursor: pointer;
+    padding: 0
+}
+.dynamic-folder:hover{
+    background-color: lightgray;
+}
+.semi-bordered{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.bordered-hard{
+    border: 2px solid black
+}
+.input-custom{
+    border-left: none;
+}
+parent-high{
+    height: 100%;
 }

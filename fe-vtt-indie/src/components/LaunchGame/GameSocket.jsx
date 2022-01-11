@@ -3,6 +3,7 @@ import { useState, useEffect, FormEvent } from 'react'
 import { io } from 'socket.io-client'
 import { useLocation } from 'react-router'
 import "../../styleSheets/GameSocketStyle.css"
+import GameChat from './GameChat'
 const ADDRESS = process.env.SOCKETSERVER // <-- address of the BACKEND PROCESS
 const socket = io(ADDRESS, { transports: ['websocket'] })
 
@@ -13,6 +14,8 @@ const GameSocket = ({setUrlParams}) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [inGameUsers, setInGameUsers] = useState([])
   const [chatHistory, setChatHistory] = useState([])
+  const [selectedFolder, setSelectedFolder] = useState("")
+  
 
 
   useEffect(() => {
@@ -80,6 +83,7 @@ const GameSocket = ({setUrlParams}) => {
 
 
     <Container fluid className=' px-0'>
+
       <Row className=' my-0' style={{ height: '95vh' }}>
         <Col md={2} className="bordered">
           {/* for the users currently in game*/}
@@ -91,36 +95,24 @@ const GameSocket = ({setUrlParams}) => {
               ))}
           </ListGroup>
         </Col>
-        <Col md={7} className="bordered"></Col>
-        <Col md={3} className='p-0 bordered d-flex flex-column justify-content-between'>
+        {/* central space / map */}
+        <Col md={7} className="bordered-hard"></Col>
+
+        <Col md={3} id="right-column" className='p-0 bordered d-flex justify-content-between'>
+
+
+          <Row className="d-flex parent-wide parent-high flex-column justify-content-between p-0 m-0">
+  
+              {/* Select folder */}
+                <Row className="p-0 m-0 parent-wide mb-2">
+                <Col md={4} className={`dynamic-folder ${selectedFolder === "chat" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("chat")}>Chat</Col>
+                <Col md={4} className={`dynamic-folder ${selectedFolder === "characters" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("characters")}>Characters</Col>
+                <Col md={4} className={`dynamic-folder ${selectedFolder === "library" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("library")}>Library</Col>
+                </Row>
      
-        <div className="d-flex">
-        <div className="dynamic-folder">Chat</div>
-        <div className="dynamic-folder">Characters</div>
-        <div className="dynamic-folder">Library</div>
-        </div>
-          {/* MIDDLE SECTION: CHAT HISTORY */}
-          <ListGroup>
-            {chatHistory.length > 1 && chatHistory.map((message, i) => (
-              <ListGroupItem key={i}>
-                <strong>{message.sender}</strong>
-                <span className='mx-1'> | </span>
-                <span>{message.text}</span>
-                <span className='ml-2' style={{ fontSize: '0.7rem' }}>
-                  {new Date(message.timestamp).toLocaleTimeString('en-US')}
-                </span>
-              </ListGroupItem>
-            ))}
-          </ListGroup>
-          {/* BOTTOM SECTION: NEW MESSAGE INPUT FIELD */}
-          <Form className="parent-wide" onSubmit={handleMessageSubmit}>
-            <input
-              className="parent-wide"
-              placeholder='send a message or roll the dice e.g. "!roll 1d6"'
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              />
-          </Form>
+              {selectedFolder=== "chat" && <GameChat chatHistory={chatHistory} handleMessageSubmit={handleMessageSubmit} message={message} setMessage={setMessage}/>}
+
+          </Row>
         </Col>
       </Row>
     </Container>
