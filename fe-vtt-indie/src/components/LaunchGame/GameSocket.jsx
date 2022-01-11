@@ -85,7 +85,7 @@ const GameSocket = ({setUrlParams}) => {
     <Container fluid className=' px-0'>
 
       <Row className=' my-0' style={{ height: '95vh' }}>
-        <Col md={2} className="bordered">
+        <Col md={2} className=" bordered-hard">
           {/* for the users currently in game*/}
           <div className='mb-3'>Connected users:</div>
           <ListGroup>
@@ -96,21 +96,22 @@ const GameSocket = ({setUrlParams}) => {
           </ListGroup>
         </Col>
         {/* central space / map */}
-        <Col md={7} className="bordered-hard"></Col>
+        <Col sm={0} md={7} className="d-none d-sm-none d-md-block bordered-hard"></Col>
 
-        <Col md={3} id="right-column" className='p-0 bordered d-flex justify-content-between'>
+        <Col sm={6} md={3} id="right-column" className='p-0 bordered-hard d-flex justify-content-between'>
 
 
           <Row className="d-flex parent-wide parent-high flex-column justify-content-between p-0 m-0">
   
               {/* Select folder */}
                 <Row className="p-0 m-0 parent-wide mb-2">
-                <Col md={4} className={`dynamic-folder ${selectedFolder === "chat" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("chat")}>Chat</Col>
-                <Col md={4} className={`dynamic-folder ${selectedFolder === "characters" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("characters")}>Characters</Col>
-                <Col md={4} className={`dynamic-folder ${selectedFolder === "library" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("library")}>Library</Col>
+                <Col md={3} className={`dynamic-folder ${selectedFolder === "chat" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("chat")}>Chat</Col>
+                <Col md={3} className={`dynamic-folder ${selectedFolder === "characters" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("characters")}>Characters</Col>
+                <Col md={3} className={`dynamic-folder ${selectedFolder === "library" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("library")}>Library</Col>
+                <Col md={3} className={`dynamic-folder ${selectedFolder === "settings" ? "semi-bordered":"bordered"}`} onClick={e => setSelectedFolder("settings")}>Settings</Col>
                 </Row>
      
-              {selectedFolder=== "chat" && <GameChat chatHistory={chatHistory} handleMessageSubmit={handleMessageSubmit} message={message} setMessage={setMessage}/>}
+              {selectedFolder === "chat" && <GameChat chatHistory={chatHistory} handleMessageSubmit={handleMessageSubmit} message={message} setMessage={setMessage}/>}
 
           </Row>
         </Col>

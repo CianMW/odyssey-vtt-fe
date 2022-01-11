@@ -39,6 +39,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<GameSocket setUrlParams={setUrlParams}/>}/>
+            {/* <Route path="/character" element={<CharacterSheet/>}/> */}
             {/* <Route path="/" element={<LandingPage/>}/> */}
             <Route path="/signUp" element={<SignUp/>}/>
             <Route path="/home/:userId" element={<Home basicAuth={basicAuth}/>}/>
