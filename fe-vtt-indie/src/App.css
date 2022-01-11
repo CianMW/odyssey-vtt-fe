@@ -42,6 +42,9 @@ a{
   text-decoration: none !important;
 }
 
-/* .full-length{
+.full-length{
   height: 100vh;
-} */
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
