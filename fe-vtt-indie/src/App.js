@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams, useLocation } from 'react-router-dom';
 import CharacterSheet from './components/CharacterSheet.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home/Home';
@@ -10,27 +10,36 @@ import MainFooter from './components/Footer';
 import SignUp from './components/login-signup/SignUp';
 import LoginNavBar from './components/login-signup/LoginNavBar';
 import MainNavBar from './components/MainNavBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CreateGame from './components/CreateGame/CreateGame';
 import { Container } from 'react-bootstrap';
+import GameSocket from './components/LaunchGame/GameSocket';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
   const [userId, setUserId] = useState(null)
   const [basicAuth, setBasicAuth] = useState(null)
+  const [urlParams, setUrlParams] = useState("")
+ 
+
   return (
     <div className="App">
         <Router>
-          { loggedIn ? (
-            <MainNavBar/>
-          ):(
-            <LoginNavBar className="static-margin"/>
+
+          {/* checks if the urlParams are equal to any routes that don't require a navbar */}
+          {urlParams !== "/" && (
+             loggedIn ? (
+              <MainNavBar/>
+            ):(
+              <LoginNavBar className="static-margin"/>
+            )
           )}
-          <Container className="full-length">
+          <Container fluid className="m-0 p-3 align-items-center full-length">
 
           <Routes>
-            <Route path="/" element={<LandingPage/>}/>
+            <Route path="/" element={<GameSocket setUrlParams={setUrlParams}/>}/>
+            {/* <Route path="/" element={<LandingPage/>}/> */}
             <Route path="/signUp" element={<SignUp/>}/>
             <Route path="/home/:userId" element={<Home basicAuth={basicAuth}/>}/>
             <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} loggedIn={loggedIn} setBasicAuth={setBasicAuth}/>}/>
@@ -38,7 +47,9 @@ function App() {
           </Routes>
 
           </Container>
+          {urlParams !== "/" && 
            <MainFooter/>
+          }
         </Router>
     </div>
   );
