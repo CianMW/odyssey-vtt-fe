@@ -17,11 +17,9 @@ import { Container } from 'react-bootstrap';
 import GameSocket from './components/LaunchGame/GameSocket';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLocation } from './Actions';
+import { PreLaunchGame } from './components/LaunchGame/PreLaunchGame';
 
 function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [urlParams, setUrlParams] = useState("")
 
   const currentState = useSelector(state => state)
  const dispatch = useDispatch()
@@ -52,15 +50,16 @@ function App() {
                    
                )
             }
-            <Route path="/gameroom/:gameId" element={<GameSocket setUrlParams={setUrlParams}/>}/>
+            <Route path="/gameroom/:gameId" element={<GameSocket/>}/>
+            <Route path="/pregamelaunch/:gameId" element={<PreLaunchGame />}/>
             <Route path="/character" element={<CharacterSheet/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
-            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}/>
+            <Route path="/login" element={<Login/>}/>
             <Route path="/createGame" element={<CreateGame/>}/>
           </Routes>
 
           </Container>
-          {urlParams !== "/" && 
+          {!currentState.data.inGame && 
            <MainFooter/>
           }
         </Router>

@@ -1,61 +1,92 @@
-import MainNavBar from "../MainNavBar.jsx"
-import { Row, Container, Col } from "react-bootstrap"
-import "../../styleSheets/homeStyle.css"
-import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import MainNavBar from "../MainNavBar.jsx";
+import { Row, Container, Col } from "react-bootstrap";
+import "../../styleSheets/homeStyle.css";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { setLocation } from "../../Actions/index.js"
-
-
-
+import { setLocation, setUser } from "../../Actions/index.js";
 
 const Home = () => {
-    const [games, setGames] = useState(null)
-    const currentState = useSelector(state => state)
-    const dispatch = useDispatch()
-    const location = useLocation()
+  const [games, setGames] = useState(null);
+  const currentState = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const location = useLocation();
 
-    useEffect(() => {
-        // fetchUserData()
-        dispatch(setLocation(location.pathname))
-        console.log(location.pathname)
-    }, []);
+  const updateUser = async () => {
+    const response = await fetch("http://localhost:3150/user/me", {
+      headers: {
+        authorization: currentState.auth.b64Auth,
+      },
+    });
 
-    return(
-        <>
-        <Container className="background-grayed" fluid>
-        <Row> 
-            <Col className="user-schedule" sm={6}>
-                <div >
-                    <h4 className="mt-2 bottom-border">Scheduled Games</h4>
-                    {/* fetch users schedule of games 
-                    IF no games => "you schedule is empty oh no!"
-                     */}
-                </div>
-            </Col>
-            <Col className="your-games" sm={6}>
-            <div >
-                <h4 className="mt-2 bottom-border">Your Games</h4>
-                <Link to="/createGame"> 
-                    <div>
-                        <div>   
-                            <h6><i className=" bold bi bi-plus-lg"></i> create a new game </h6>
-                        </div>
-                    </div>
-                </Link>
-                {/* 
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setUser(data));
+      console.log("here is the user: ", data);
+    }
+  };
+
+  useEffect(() => {
+    // fetchUserData()
+    updateUser();
+    console.log(location.pathname);
+  }, []);
+
+  return (
+    <>
+      <Container className="background-grayed " fluid>
+        <Row >
+          <Col className="your-games" sm={12}>
+            <div>
+              <h4 className="mt-2 bottom-border">Your Games</h4>
+              <Link to="/createGame">
+                    <h6>
+                      <i className=" bold bi bi-plus-lg"></i> create a new game{" "}
+                    </h6>
+
+              </Link>
+              {/* 
                 SEARCH component = search for game by name , tag or player 
                 If no games found display others  
                 IF no games at all => "you're not yet part of any gamers, find a game?"
                 */}
             </div>
-            </Col>
-       </Row>
+              <Container className="bordered py-4">
+                <Row>
+            {currentState.user.info.games.map((game) => (
+              <Col sm={6} className="col-12">
+                  <Col sm={6}>
+                          <Col sm={12}>
+                    <h4>{game.name}</h4>
+                          </Col>
+                          <Col sm={12} className="p-0 m-0">
+                    <p><span>Last Played: </span>{game.updatedAt}</p>
+                          </Col>
+                  </Col>
+                  <Col sm={6}>
+                    <div className="parent-wide d-flex justify-content-center">
+                        <Link to={`/pregamelaunch/${game._id}`}>
+                      <div
+                        className="button-red  inverted-glow"
+                        >
+                        <span>
+                          Launch Game <i class="fas fa-dice-d20"></i>
+                        </span>
+                      </div>
+                        </Link>
+                    </div>
+                  </Col>
+              </Col>
+            ))}
+            </Row>
+          </Container>
+          {/* --------------- */}
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+};
 
-        </Container>
-        </>
-    )
-}
-
-export default Home
+export default Home;

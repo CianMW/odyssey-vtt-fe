@@ -14,7 +14,7 @@ export const initialState = {
   data: {
     loggedIn: false,
     loading: true,
-    location: ""
+    inGame: false
   },
   user: {
     info: {}

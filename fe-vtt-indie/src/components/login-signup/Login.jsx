@@ -34,6 +34,7 @@ const Login = ({setUserId}) => {
       console.log(b64Auth)
       const b64Authentication = "basic "+ b64Auth
     
+    
     const response = await fetch("http://localhost:3150/user/me", {
       headers:{
         authorization:b64Authentication 
@@ -46,9 +47,7 @@ const Login = ({setUserId}) => {
       dispatch(setBasicAuth(b64Authentication))
       console.log("here is the user: ", data)
      await dispatch(setLoggedIn(true));
-      if(data._id === currentState.user.info._id){
-        navigate(`/${data._id}`, {replace: true})
-      }
+       await navigate(`/${data._id}`, {replace: true})
     }
       
     }
