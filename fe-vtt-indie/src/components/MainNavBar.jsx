@@ -1,7 +1,12 @@
 import {Container, Navbar, Nav, NavDropdown} from "react-bootstrap"
 import "../styleSheets/mainNavBarStyle.css"
+import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 
 const MainNavBar = () => {
+
+  const currentState = useSelector(state => state)
+  const dispatch = useDispatch()
 
 
     return(
@@ -9,7 +14,9 @@ const MainNavBar = () => {
         <Container className="p-0 static-margin" id="navbar-container" fluid>
           <Navbar id="main-navbar" className="linked navbar-dark" expand="lg" fixed="top" >
             <Container className="d-flex justify-content-between">
+              <Link to={`/${currentState.user.info._id}` }>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+              </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
              <Navbar.Collapse className="justify-content-between" id="responsive-navbar-nav">
             <Nav className="me-auto" navbarScroll>
