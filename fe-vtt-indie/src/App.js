@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 import Login from './components/login-signup/Login';
 import LandingPage from './components/LandingPage/LandingPage';
 import MainFooter from './components/Footer';
+import { connect } from "react-redux";
 import SignUp from './components/login-signup/SignUp';
 import LoginNavBar from './components/login-signup/LoginNavBar';
 import MainNavBar from './components/MainNavBar';
@@ -14,37 +15,48 @@ import { useEffect, useState } from 'react';
 import CreateGame from './components/CreateGame/CreateGame';
 import { Container } from 'react-bootstrap';
 import GameSocket from './components/LaunchGame/GameSocket';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLocation } from './Actions';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [userId, setUserId] = useState(null)
-  const [basicAuth, setBasicAuth] = useState(null)
   const [urlParams, setUrlParams] = useState("")
- 
+
+  const currentState = useSelector(state => state)
+ const dispatch = useDispatch()
+
 
   return (
+
+
     <div className="App">
         <Router>
 
           {/* checks if the urlParams are equal to any routes that don't require a navbar */}
-          {urlParams !== "/" && (
-             loggedIn ? (
+          {
+             currentState.data.loggedIn ? (
               <MainNavBar/>
             ):(
               <LoginNavBar className="static-margin"/>
             )
-          )}
-          <Container fluid className="m-0 p-3 align-items-center full-length">
+          }
+          <Container fluid className="m-0 p-0 justify-content-center align-items-center full-length">
 
           <Routes>
-            <Route path="/" element={<GameSocket setUrlParams={setUrlParams}/>}/>
-            {/* <Route path="/character" element={<CharacterSheet/>}/> */}
-            {/* <Route path="/" element={<LandingPage/>}/> */}
+            {
+               currentState.data.loggedIn ? (
+                 <Route path="/:userId" element={<Home/>}/>
+                 ) : (
+                   <Route path="/" element={<LandingPage/>}/>
+                   
+               )
+            }
+            <Route path="/gameroom/:gameId" element={<GameSocket setUrlParams={setUrlParams}/>}/>
+            <Route path="/character" element={<CharacterSheet/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
-            <Route path="/home/:userId" element={<Home basicAuth={basicAuth}/>}/>
-            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} loggedIn={loggedIn} setBasicAuth={setBasicAuth}/>}/>
-            <Route path="/createGame" element={<CreateGame  basicAuth={basicAuth}/>}/>
+            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}/>
+            <Route path="/createGame" element={<CreateGame/>}/>
           </Routes>
 
           </Container>

@@ -1,47 +1,40 @@
-export const fetchJobsAction = (url) => {
-    // do fetch stuff
-    return async (dispatch) => {
-      console.log("THIS IS THE URL", url);
-      
-      dispatch({
-        type: "TOGGLE_LOADER",
-        payload: true,
-      });
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("HERE IS THE FETCHED DATA :", data);
-        const spreadData = [...data.data];
-        await dispatch({
-          type: "SET_JOBS",
-          payload: spreadData,
-        });
-        setTimeout(() => {
-          dispatch({
-            type: "TOGGLE_LOADER",
-            payload: false,
-          });
-        }, 1000);
-      } else {
-        console.log("ERROR: could not fetch data");
-      }
-    };
+import thunk from "redux-thunk";
+
+export const setBasicAuth = (auth) => {
+  return async (dispatch) => {
+    console.log("THIS IS THE base 64 auth", auth);
+
+    dispatch({
+      type: "SETBASEAUTH",
+      payload: auth,
+    });
   };
+};
+export const setUser = (user) => {
+  return async (dispatch) => {
+    console.log("THIS IS THE user", user);
+
+    dispatch({
+      type: "SETUSER",
+      payload: user,
+    });
+  };
+};
   
-  export const addToFavourites = (element) => {
+  export const setLoggedIn = (val) => {
     return async (dispatch) => {
       dispatch({
-        type: "FAVOURITE",
-        payload: element,
+        type: "SETLOGGEDIN",
+        payload: val,
       });
     };
   };
   
-  export const removeFromFavourites = (element) => {
+  export const setLocation = (path) => {
     return async (dispatch) => {
       dispatch({
-        type: "REMOVE_FAVOURITE",
-        payload: element,
+        type: "SETLOCATION",
+        payload: path,
       });
     };
   };

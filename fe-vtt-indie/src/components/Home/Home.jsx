@@ -2,24 +2,24 @@ import MainNavBar from "../MainNavBar.jsx"
 import { Row, Container, Col } from "react-bootstrap"
 import "../../styleSheets/homeStyle.css"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useEffect } from "react"
+import { connect, useDispatch, useSelector } from "react-redux";
+import { setLocation } from "../../Actions/index.js"
 
 
-const Home = ({basicAuth}) => {
+
+
+const Home = () => {
     const [games, setGames] = useState(null)
-
-    const fetchUserData = async () => {
-        console.log("basic 64 auth : ", basicAuth)
-        const response = await fetch("http://localhost:3150/user/me", {
-            headers:{
-              authorization:basicAuth 
-            }
-          })
-    }
+    const currentState = useSelector(state => state)
+    const dispatch = useDispatch()
+    const location = useLocation()
 
     useEffect(() => {
-        fetchUserData()
+        // fetchUserData()
+        dispatch(setLocation(location.pathname))
+        console.log(location.pathname)
     }, []);
 
     return(
