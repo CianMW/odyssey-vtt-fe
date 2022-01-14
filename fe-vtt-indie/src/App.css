@@ -43,7 +43,7 @@ a{
 }
 
 .full-length{
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;

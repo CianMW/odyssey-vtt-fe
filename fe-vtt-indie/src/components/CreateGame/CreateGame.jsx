@@ -10,7 +10,7 @@ import {
   } from "react-bootstrap";
 import "../../styleSheets/homeStyle.css"
 import { useState } from "react"
-import { Link , useLocation} from "react-router-dom"
+import { Link , useLocation, useNavigate} from "react-router-dom"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setLocation } from "../../Actions/index.js";
@@ -25,7 +25,7 @@ const CreateGame = () => {
     const [characterSheet, setCharacterSheet] = useState("")
     const state = useSelector(state => state)
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
 
     const createGame = async () => {
       const gameData = {
@@ -45,7 +45,8 @@ const CreateGame = () => {
         } )
         if (response.ok) {
           const data = await response.json()
-          console.log("correct!!!!", data)
+          console.log("Success!!", data)
+           navigate(`/${data._id}`, {replace: true})
         } else {
           console.log("Problem!!!!")
         }
