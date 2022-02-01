@@ -15,7 +15,10 @@ Support for indie developers includes the upload and propogation of personal rul
 - Connection to custom API for Developers including adding custom character sheets, uploading creature files ( json format), library entries (lore/rules).
 - Personal profile options.
 ## What I Learned
-- 
+- This application has pushed my design skills.
+-  Improved my ability to see the big picture in relation to mobile responsive design.
+-  Entirely changed my skills with socket IO and websockets in general.
+-  Advanced my knowledge of CSS animations.
 
 ## Tech Used  
 - Javascript, HTML5 & CSS3
