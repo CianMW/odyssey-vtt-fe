@@ -4,7 +4,9 @@ import {persistStore, persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import { encryptTransform } from "redux-persist-transform-encrypt"
 import {dotenv} from "dotenv/config"
+import dataReducer from "../Reducers/globalDataReducer.js"
 import userReducer from "../Reducers/userReducer.js"
+import authReducer from "../Reducers/authReducer.js"
 
 const aComposeFunctionThatAlwaysWorks = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -12,7 +14,14 @@ export const initialState = {
   data: {
     loggedIn: false,
     loading: true,
+    inGame: false
   },
+  user: {
+    info: {}
+  },
+  auth: {
+    b64Auth: ""
+  }
 }
 
 const persistConfig = {
@@ -22,11 +31,14 @@ const persistConfig = {
       encryptTransform({
           secretKey: "stewtanic",
       })
-  ] 
+  ],
+  blacklist: ["data, user, auth"]
 }
 
 const bigReducer = combineReducers({
-  data: userReducer,
+  data: dataReducer,
+  user: userReducer,
+  auth: authReducer,
 })
 
 const persistedBigReducer = persistReducer(persistConfig, bigReducer)

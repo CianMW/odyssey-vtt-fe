@@ -10,13 +10,18 @@ import {
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setBasicAuth, setLoggedIn, setUser } from "../../Actions";
 
 
-const Login = ({setUserId, setLoggedIn, loggedIn, setBasicAuth}) => {
+const Login = ({setUserId}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-  
+
+    const currentState = useSelector(state => state)
+    const dispatch = useDispatch()
+
     useEffect(() => {
       console.log( email, password)
     }, [password, email])
@@ -29,6 +34,7 @@ const Login = ({setUserId, setLoggedIn, loggedIn, setBasicAuth}) => {
       console.log(b64Auth)
       const b64Authentication = "basic "+ b64Auth
     
+    
     const response = await fetch("http://localhost:3150/user/me", {
       headers:{
         authorization:b64Authentication 
@@ -37,13 +43,11 @@ const Login = ({setUserId, setLoggedIn, loggedIn, setBasicAuth}) => {
 
     if (response.ok) {
       const data = await response.json()
-      setBasicAuth(b64Authentication)
-      console.log(data)
-      setUserId(data._id);
-      setLoggedIn(true);
-      navigate(`/home/${data._id}`, {replace: true})
-
-
+      dispatch(setUser(data))
+      dispatch(setBasicAuth(b64Authentication))
+      console.log("here is the user: ", data)
+     await dispatch(setLoggedIn(true));
+       await navigate(`/${data._id}`, {replace: true})
     }
       
     }
@@ -92,8 +96,8 @@ const Login = ({setUserId, setLoggedIn, loggedIn, setBasicAuth}) => {
             <Col sm={6}>
               <div className="d-flex justify-content-center">
               <div onClick={e => signIn()} className="button-red  inverted-glow"  as="Link">
-                <span>Join   <i class="fas fa-dice-d20"></i></span></div>
-                      </div>
+                <span>Enter  <i class="fas fa-dice-d20"></i></span></div>
+              </div>
             </Col>
           </Row>
           <Row className="justify-content-center mt-3">
