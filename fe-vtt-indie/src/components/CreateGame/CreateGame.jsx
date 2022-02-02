@@ -6,116 +6,138 @@ import {
     Button,
     InputGroup,
     FormControl,
-  } from "react-bootstrap";import "../../styleSheets/homeStyle.css"
+    Form,
+  } from "react-bootstrap";
+import "../../styleSheets/homeStyle.css"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link , useLocation, useNavigate} from "react-router-dom"
 import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { setLocation } from "../../Actions/index.js";
+import DefaultInfo from "./DefaultInfo.jsx";
+import BasicFantasy from "./BasicFantasy.jsx";
 
 
-const CreateGame = ({basicAuth}) => {
-    const [games, setGames] = useState(null)
-
-    const fetchUserData = async () => {
-        console.log("basic 64 auth : ", basicAuth)
-        const response = await fetch("http://localhost:3150/user/me", {
-            headers:{
-              authorization:basicAuth 
-            }
-          })
-    }
-
-    useEffect(() => {
-        fetchUserData()
-    }, []);
+const CreateGame = () => {
 
     const [gameName, setGameName] = useState("")
-    const [baseGame, setBaseGame] = useState("")
+    const [baseGame, setBaseGame] = useState(false)
     const [characterSheet, setCharacterSheet] = useState("")
-    const [players, setPlayers] = useState("")
+    const state = useSelector(state => state)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
+    const createGame = async () => {
+      const gameData = {
+        name: gameName,
+        baseGame: baseGame,
+        characterSheet: characterSheet,
+      }
+
+      try{
+        const response = await fetch("http://localhost:3150/game/",{
+         method: 'POST',
+         headers: {
+          'Content-Type': 'application/json',
+           authorization: state.auth.b64Auth
+          },
+          body: JSON.stringify(gameData),
+        } )
+        if (response.ok) {
+          const data = await response.json()
+          console.log("Success!!", data)
+           navigate(`/${data._id}`, {replace: true})
+        } else {
+          console.log("Problem!!!!")
+        }
+      } catch(error) {
+        console.log(error)
+      }
+    }
     return(
-        <div className="mt-5 d-flex " >
+        <Container className="parent-wide parent-height align-items-center" >
+          <Container >
 
-        <Container className="mt-5 background-grayed " fluid>
-        <Row className="justify-content-center">
-            <Col sm={12} md={8} lg={6} >
-                <Row>
-                    <Col sm={12}>
-                    <Row>
-                  <Col>
+          <Row className="justify-content-center ">
+            <Col>
+                <h2>Create a New Game</h2>
+            </Col>
+          </Row>
+          </Container>
+
+        <Container className="parent-wide mt-3 background-grayed " fluid>
+        <Row className="mb-4">
+        <Col sm={12} md={6}>
+          <Form>
+          <Col sm={10}>
+
+              <Row className="justify-content-center">
+                    <h3 className="d-flex align-text-left">Name</h3>
                     <InputGroup className="mb-3">
-                    <InputGroup.Text className="justify-content-center" id="basic-addon1"><span>Name</span></InputGroup.Text>                    
                     <FormControl
                         placeholder="Game Name"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
                         onChange={(e) => {setGameName(e.currentTarget.value)}}
                         value={gameName}
-                      />
-                    </InputGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <InputGroup className="mb-3">
-                      <InputGroup.Text className="justify-content-center" id="basic-addon1"><span>Base Game</span></InputGroup.Text>
-                      <FormControl
-                      type="password"
-                        placeholder="enter password"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        onChange={(e) => {setBaseGame(e.currentTarget.value)}}
-                        value={baseGame}
+                        required
                         />
                     </InputGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
+             </Row>
+             <Row className="mb-4">
+              <h3 className="d-flex align-text-left">Choose a game to play</h3>
+
                     <InputGroup className="mb-3">
-                      <InputGroup.Text className="justify-content-center" id="basic-addon1"><span>Character Sheet</span></InputGroup.Text>
-                      <FormControl
-                      type="password"
-                        placeholder="enter password"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        onChange={(e) => {setCharacterSheet(e.currentTarget.value)}}
-                        value={characterSheet}
-                        />
+                    <Form.Select 
+                      required
+                    onChange={(e) => {setBaseGame(e.currentTarget.value)}} aria-label="Default select example">
+                      <option value={false}>none</option>
+                      <option value="basic fantasy">Basic Fantasy</option>
+                      
+                    </Form.Select>
+
                     </InputGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
+
+
+
+            </Row>
+            <Row className="mb-4">
+                <h3 className="d-flex align-text-left">Select A Character Sheet</h3>
                     <InputGroup className="mb-3">
-                      <InputGroup.Text className="justify-content-center" id="basic-addon1"><span>Players</span></InputGroup.Text>
-                      <FormControl
-                      type="password"
-                        placeholder="enter password"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        onChange={(e) => {setPlayers(e.currentTarget.value)}}
-                        value={players}
-                        />
+                      <Form.Select 
+                      required
+                      onChange={(e) => {setCharacterSheet(e.currentTarget.value)}} aria-label="Default select example">
+                      <option value="null">none</option>
+                      <option value="basic fantasy">Basic Fantasy</option>
+                    </Form.Select>
                     </InputGroup>
-                  </Col>
-                </Row>
-  
+            </Row>
+            </Col>
+
+                <Row>
+
+          
           <Row className="justify-content-center">
-            <Col sm={6}>
+            <Col onClick={e => createGame()} sm={5} md={5} className="col-6">
               <div className="d-flex justify-content-center">
-              <div className="button-red  inverted-glow"  as="Link">
-                <span>Create Game  <i class="fas fa-dice-d20"></i></span></div>
+              <div className="button-red parent-wide inverted-glow"  as="Link">
+                <span>Create Game <i class="fas fa-dice-d20"></i></span></div>
                       </div>
             </Col>
           </Row>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
 
+          
+        </Row>
+        </Form>
+
+            </Col>
+            {/* game information */}
+            <Col sm={12} md={6} id="confirmation-container" className="border-left">
+              {baseGame ? (<BasicFantasy/>) : (<DefaultInfo/>)}
+            </Col>
+          </Row>
         </Container>
-        </div>
+        </Container>
         
     )
 }

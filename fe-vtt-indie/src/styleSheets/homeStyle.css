@@ -1,7 +1,7 @@
 .your-games{
     /* background-color: #FF7F7F; */
     /* width: 100vw; */
-    height: 100vh;
+    height: 100%;
     border-left: 1px solid black;
     padding: 0 ;
 
@@ -14,12 +14,28 @@
     padding: 0 ;
 
 }
-.background-grayed{
+/* .background-grayed{
     background: rgb(246,246,246);
     background: -moz-linear-gradient(90deg, rgba(246,246,246,1) 100%, rgba(0,0,0,1) 100%);
     background: -webkit-linear-gradient(90deg, rgba(246,246,246,1) 100%, rgba(0,0,0,1) 100%);
     background: linear-gradient(90deg, rgba(246,246,246,1) 100%, rgba(0,0,0,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f6f6f6",endColorstr="#000000",GradientType=1);
+} */
+
+
+.parent-wide{
+    min-width: 100%
 }
 
+.border-left{
+    border-left: 1px solid lightgray;
+}
 
+.parent-height{
+    min-height: 100vh
+}
+
+span#basic-addon1{
+    min-width: 150px;
+    background-color: lightgray;
+}

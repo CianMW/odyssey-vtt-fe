@@ -3,13 +3,10 @@ import { initialState } from "../Store/index.js"
 
 const userReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "FAVOURITE": 
+		case "SETUSER": 
 			return {
 					...state,
-			favourites: [
-				...state.favourites,
-				 action.payload
-			],
+			info: action.payload,
 		}
 		default:
 		return state 	
