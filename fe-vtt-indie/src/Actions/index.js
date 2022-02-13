@@ -30,11 +30,11 @@ export const setUser = (user) => {
     };
   };
   
-  export const setLocation = (path) => {
+  export const setInGame = (bool) => {
     return async (dispatch) => {
       dispatch({
-        type: "SETLOCATION",
-        payload: path,
+        type: "SETINGAME",
+        payload: bool,
       });
     };
   };

@@ -8,10 +8,10 @@ const dataReducer = (state = initialState, action) => {
 					...state,
 			loggedIn: action.payload,
 		}
-		case "SETLOCATION": 
+		case "SETINGAME": 
 			return {
 					...state,
-			location: action.payload,
+			inGame: action.payload,
 		}
 		default:
 		return state 	
