@@ -52,11 +52,12 @@ const Login = ({setUserId}) => {
       
     }
     return (
-        <div className="d-flex align-items-center">
-        <Container className="intro-container mt-5">
+        <div className="d-flex parent-size align-items-center">
+        <Container fluid className="mt-0">
+          <Row className="header-block"></Row>
           <Container className="mt-5">
             <Row className="justify-content-center align-items-center">
-              <Col sm={12} md={8} lg={6} className="bordered-login p-3">
+              <Col sm={12} md={8} lg={6} className="mt-5 bordered-login p-3">
                 <Row>
                   <Col>
                     <h4 className="sign-in-title">Log In</h4>

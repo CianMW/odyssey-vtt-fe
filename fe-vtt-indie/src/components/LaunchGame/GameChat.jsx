@@ -5,7 +5,7 @@ import "../../styleSheets/GameSocketStyle.css"
 const GameChat = ({chatHistory, handleMessageSubmit, message, setMessage}) => {
 
     return(
-        <Container fluid className="p-0 m-0 d-flex" id="folder-container">
+        <Row className="p-0 m-0 d-flex chatContainer" id="folder-container">
 
         {/* MIDDLE SECTION: CHAT HISTORY */}
               
@@ -24,17 +24,19 @@ const GameChat = ({chatHistory, handleMessageSubmit, message, setMessage}) => {
               {/* BOTTOM SECTION: NEW MESSAGE INPUT FIELD */}
               <Row  className="mx-auto parent-wide mt-auto p-0 m-0">
                   <Col md={12} className="p-0 m-0">
-              <Form className=" parent-wide" onSubmit={handleMessageSubmit}>
-                <input
-                  className="parent-wide"
+              <Form className=" parent-wide">
+                <textarea
+                  className="form-control parent-wide chatbar-fixed"
                   placeholder='send a message or roll the dice e.g. "!roll 1d6"'
                   value={message}
+                  onKeyUp={(e) => {handleMessageSubmit(e)}}
                   onChange={(e) => setMessage(e.target.value)}
-                  />
+                  >
+                </textarea>
               </Form>
                   </Col>
                 </Row>
-    </Container>
+    </Row>
     )
 }
 

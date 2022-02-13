@@ -1,64 +1,56 @@
-.intro-container{
-    width: 100vw;
-    height: 100vh;
-}
+
 .background-fixed{
     background-image: url("https://wallpapercave.com/wp/zMWFjNf.jpg");
     background-repeat: no-repeat;
     background-color: #b1b1b1;
     background-size: cover;
-    width: 100vw
+    width: 100%;
+    background-attachment: fixed;
 } 
-
-#overflow-cutoff{
-    overflow-x: hidden;
-}
 
 .landing-text{
     color: white !important;
     font-weight: bold;
     font-size: 30px;
-    white-space: nowrap;
 }
 
-div.button-red{
-    background-color: #d1040b;
-    outline-color: black;
-    color: white;
-    opacity: 0.9;
-    width: 100px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10%;
-    font-weight: bolder;
-    font-size:large;
-    cursor: pointer;
-    transition-duration: 0.5s, 0.5s;
+
+
+.header-block{
+    min-height: 120px;
+    min-width: 100%;
+    /* background-color:#212121; */
+    /* background-color:#333333; */
+    /* background-color: #36454f; */
+  background-color: #1f1f1f;
+}
+@media only screen and (max-width: 480px) {
+    .header-block{
+        min-height: 75px;
+        min-width: 100%;
+        /* background-color:#212121; */
+        /* background-color:#333333; */
+        /* background-color: #36454f; */
+      background-color: #1f1f1f;
+    }
+    
 }
 
-div.button-red:hover{
-    background-color: #DB0007;
-    outline-color: black;
-    color: white;
-    opacity: 1;
-    width: 100px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10%;
-    font-weight: bolder;
-    font-size:large;
-    cursor: pointer;
-    transition-duration: 0.5s, 0.5s;
+.landing-image{
+    height:150px;
+    width:150px;
+    margin-bottom: 50px;
 }
 
-div.glow:hover{
-    border-radius: 10%;
-    box-shadow:
-    0 0 20px 5px #fff;
-    transition-duration: 0.5s, 0.5s;
-}
+@media only screen and (max-width: 768px) {
+    .landing-image{
+        height:50px;
+        width:50px;
+        margin-bottom: 0px;
+    }
+  }
 
+
+.placeholder-laptop{
+    width: 100%;
+}
