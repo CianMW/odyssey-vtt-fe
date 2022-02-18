@@ -1,5 +1,5 @@
 
-import { Row, Col, Container } from "react-bootstrap"
+import { Row, Col, Container, Accordion } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom"
 
@@ -10,14 +10,15 @@ const RecentGames = () => {
 
 
     return(
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>
+          <h3>
+          Recent Games
+          </h3>
+          </Accordion.Header>
+        <Accordion.Body>
+  
          <Container className="bordered py-2 bg-white">
-                <Row className="p-0 m-0 pb-2">
-                  <h1 className="m-0 p-0">
-                      <u>
-                      Recent Games
-                      </u>
-                  </h1>
-                </Row>
                 <Row className="p-0 m-0">
             {currentState.user.info.games.filter((game, idx) => idx <= 3).map((game) => ( 
               <Col key={Math.random()} md={6} className="col-12 p-0 m-0">
@@ -44,6 +45,10 @@ const RecentGames = () => {
             ))}
             </Row>
           </Container>
+
+          </Accordion.Body>
+      </Accordion.Item>
+    
     ) 
 }
 
