@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-
+import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 
@@ -8,13 +9,20 @@ const MyCharacters = () => {
     const dispatch = useDispatch();
 
     return (
+      <Accordion.Item eventKey="1" className="mb-2">
+        <Accordion.Header>
+          <h3>
+          Recent Games
+          </h3>
+          </Accordion.Header>
+        <Accordion.Body>
         <Container className="bordered py-2 ">
         <Row className="p-0 m-0 pb-2">
-          <h1 className="m-0 p-0">
+          <h3 className="m-0 p-0">
               <u>
-              Recent Games
+              My Characters
               </u>
-          </h1>
+          </h3>
         </Row>
         <Row className="p-0 m-0">
     {currentState.user.info.games.filter((game, idx) => idx <= 3).map((game) => ( 
@@ -42,6 +50,8 @@ const MyCharacters = () => {
     ))}
     </Row>
   </Container>
+  </Accordion.Body>
+  </Accordion.Item>
         
     )
 }
