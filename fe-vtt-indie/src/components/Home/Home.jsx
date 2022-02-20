@@ -1,4 +1,4 @@
-import { Row, Container, Col } from "react-bootstrap";
+import { Row, Container, Col, Accordion } from "react-bootstrap";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -6,6 +6,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { setLocation, setUser } from "../../Actions/index.js";
 import "../../styleSheets/homeStyle.css";
 import RecentGames from "./RecentGames.jsx";
+import MyCharacters from "./MyCharacters.jsx";
 
 const Home = () => {
   const [games, setGames] = useState(null);
@@ -36,7 +37,7 @@ const Home = () => {
   return (
       <Container className="background-grayed">
         <Row >
-          <Col className="your-games" sm={12}>
+          <Col className="your-games col-12">
             <div>
               <h4 className="mt-2 bottom-border text-center">Dashboard</h4>
               {/* <Link to="/createGame">
@@ -51,9 +52,24 @@ const Home = () => {
                 IF no games at all => "you're not yet part of any gamers, find a game?"
                 */}
             </div>
+            <Row>
+          <Col className="d-flex d-none col-md-2 d-md-block"></Col>
+          <Col className="col-12 col-md-8 ">
+
+
+            <Accordion>
              <RecentGames/>
+             <MyCharacters/>
+
+            </Accordion>
+
+          </Col>
+          <Col className="d-flex d-none col-md-2 d-md-block"></Col>
+
+            </Row>
           {/* --------------- */}
           </Col>
+
         </Row>
       </Container>
   );
