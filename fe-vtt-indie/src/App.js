@@ -15,7 +15,6 @@ import { Container } from 'react-bootstrap';
 import GameSocket from './components/LaunchGame/GameSocket';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLocation } from './Actions';
-import { PreLaunchGame } from './components/LaunchGame/PreLaunchGame';
 import TopNav from './components/TopNav';
 import MainSideBar from './components/MainSideBar';
 import './App.css';
@@ -27,6 +26,7 @@ function App() {
   const [display, setDisplay] = useState("inline-block");
   const currentState = useSelector(state => state)
  const dispatch = useDispatch()
+ console.log("beans")
 
  const openSideNav = () => {
   setWid("open")
@@ -39,6 +39,7 @@ const closeSideNav = () => {
 }
 
 const loggedIn = currentState.data.loggedIn ? "none" : "block"
+
 
   return (
       <Container  className=" full-parent-size m-0 p-0 full-length column-wrapper">
@@ -62,7 +63,6 @@ const loggedIn = currentState.data.loggedIn ? "none" : "block"
                )
             }
             <Route path="/gameroom/:gameId" element={<GameSocket/>}/>
-            {/* <Route path="/pregamelaunch/:gameId" element={<PreLaunchGame />}/> */}
             <Route path="/character" element={<CharacterSheet/>}/>
             <Route path="/signUp" element={<SignUp/>}/>
             <Route path="/login" element={<Login/>}/>
