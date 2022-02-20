@@ -1,0 +1,53 @@
+.bordered-login{
+    border: 3px solid rgb(0, 0, 0) !important;
+    border-radius: 10px;
+}
+#basic-addon1{
+    width:80px;
+}
+
+.sign-in-title{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+div.button-red{
+    background-color: #d1040b;
+    outline-color: black;
+    color: white;
+    opacity: 0.9;
+    /* width: 100px; */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    font-weight: bolder;
+    font-size:large;
+    cursor: pointer;
+    transition-duration: 0.5s, 0.5s;
+}
+
+div.button-red:hover{
+    background-color: #DB0007;
+    outline-color: black;
+    color: white;
+    opacity: 1;
+    /* width: 100px; */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    font-weight: bolder;
+    font-size:large;
+    cursor: pointer;
+    transition-duration: 0.5s, 0.5s;
+}
+
+div.inverted-glow:hover{
+    border-radius: 10%;
+    box-shadow:
+    0 0 20px 5px rgb(0, 0, 0);
+    transition-duration: 0.5s, 0.5s;
+}

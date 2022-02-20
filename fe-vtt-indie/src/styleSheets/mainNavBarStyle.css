@@ -1,0 +1,50 @@
+/* main color #2A2C2B */
+
+#navbar-container #main-navbar {
+    background-color: #000000 ;
+    color: white ;
+}
+#navbar-container #main-navbar .linked {
+    color: gray;
+}
+#navbar-container #main-navbar .linked:hover{
+    color: white;
+}
+#navbar-container #main-navbar #navbarScrollingDropdown {
+    color: gray;
+}
+#navbar-container #main-navbar #navbarScrollingDropdown:hover{
+    color: white;
+}
+span.navbar-toggler-icon{
+    background-image: white !important
+}
+nav #main-navbar{
+    background-color: #2C3539;
+}
+#navbar-container #main-navbar{
+    background-color:  #040200;
+}
+nav.linked{
+    height:80px;
+    font-size: larger;
+    font-weight: 500;
+}
+a.linked.nav-link{
+    border-right: 1px solid white;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 3vw;
+}
+
+/* nav#main-navbar.linked{
+    ju
+} */
+/* .navbar-collapse.collapse.show{
+    display: flex;
+    justify-content: space-between;
+} */
+
+.static-margin{
+    margin-bottom: 80px;
+} 
