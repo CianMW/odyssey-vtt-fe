@@ -16,6 +16,10 @@ const CreateCharacter = () => {
     hitpoints: 0,
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   // Races
   const dwarfRace = {
     name: "Dwarf",
@@ -296,7 +300,7 @@ const CreateCharacter = () => {
                   id="floatingInput"
                   placeholder="name@example.com"
                 />
-                <label for="floatingInput">Know a good name?</label>
+                <label htmlFor="floatingInput">Know a good name?</label>
               </div>
               {/* Race Selection  */}
               <div className="mt-2" id="race-selection">
@@ -317,7 +321,7 @@ const CreateCharacter = () => {
                       Halfling
                     </option>
                   </select>
-                  <label for="floatingSelect">Race</label>
+                  <label htmlFor="floatingSelect">Race</label>
                 </div>
               </div>
               {/* Class Selection  */}
@@ -341,7 +345,7 @@ const CreateCharacter = () => {
                       Magic-User
                     </option>
                   </select>
-                  <label for="floatingSelect">Class</label>
+                  <label htmlFor="floatingSelect">Class</label>
                 </div>
               </div>
               {/* Level Selection  */}
@@ -376,10 +380,31 @@ const CreateCharacter = () => {
                     <option value="19">19</option>
                     <option value="20">20</option>
                   </select>
-                  <label for="floatingSelect">Level</label>
+                  <label htmlFor="floatingSelect">Level</label>
                 </div>
               </div>
-              {/* Hitpoint Selection  */}
+
+              {/* Hitpoint Selection START  */}
+              
+              <p>{characterLevel}</p>
+              <Row className="mb-3">
+                  <Col className="col-4">
+                  <div class="col">
+                    <input type="number" size="lg" class="form-control" value={characterHitpoints} placeholder="First name"></input>
+                </div>
+                  </Col>
+                  <Col className="col-8">
+                      <Button onClick={e => {preParsingHitDice()}} variant="danger" >Roll!</Button>
+                  </Col>
+              </Row>
+
+              {/* Hitpoint Selection  END */}
+
+              <div className="mt-3 justify-content-center d-flex">
+                <Button variant="danger" disabled={checkDisabledButton()} size="lg">
+                  Next
+                </Button>
+              </div>
             </Col>
             <Col className="col-12 col-md-6">
               <h3>{characterName}</h3>
@@ -446,25 +471,11 @@ const CreateCharacter = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-              <p>{characterLevel}</p>
-              <Row className="mb-3">
-                  <Col className="col-4">
-                  <div class="col">
-                    <input type="number" size="lg" class="form-control" value={characterHitpoints} placeholder="First name"></input>
-                </div>
-                  </Col>
-                  <Col className="col-8">
-                      <Button onClick={e => {preParsingHitDice()}} variant="danger" >Roll!</Button>
-                  </Col>
-              </Row>
+             
             </Col>
           </Row>
         </div>
-        <div className="justify-content-center d-flex">
-          <Button variant="danger" disabled={checkDisabledButton()} size="lg">
-            Next
-          </Button>
-        </div>
+     
       </Container>
     </div>
   );

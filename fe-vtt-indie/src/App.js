@@ -40,6 +40,7 @@ const closeSideNav = () => {
 
 const loggedIn = currentState.data.loggedIn ? "none" : "block"
 
+
   return (
       <Container  className=" full-parent-size m-0 p-0 full-length column-wrapper">
           <Router>
